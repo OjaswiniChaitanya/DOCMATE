@@ -172,13 +172,12 @@ def main():
         st.session_state.uploader_counter = 0
     
     # Header
-    st.markdown('<h1 class="main-header">📚 PDF Chatbot</h1>', unsafe_allow_html=True)
-    st.markdown('<p class="sub-header">Upload PDFs and ask questions about their content</p>', unsafe_allow_html=True)
+    st.title("📚 DOCMATE Chatbot")
+    st.write("Upload PDFs and ask questions about their content")
     
     # Sidebar for file upload
     with st.sidebar:
         st.header("📁 Upload Documents")
-        st.markdown('<div class="upload-section">', unsafe_allow_html=True)
         
         # Use a unique key that changes when we want to clear
         uploader_key = f"file_uploader_{st.session_state.get('uploader_counter', 0)}"
@@ -195,8 +194,6 @@ def main():
             if st.button("Process PDFs", type="primary"):
                 st.session_state.chatbot.add_documents(uploaded_files)
                 st.session_state.chat_history = []  # Clear chat history when new docs are added
-        
-        st.markdown('</div>', unsafe_allow_html=True)
         
         # Display uploaded documents
         if st.session_state.chatbot.documents:
